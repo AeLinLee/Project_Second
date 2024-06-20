@@ -56,6 +56,7 @@ $(document).ready(function(){
 			 
 			      <span class="fw-bold ">주문수량:</span>
 			      <input type="text" name="gAmount" value="1" id="gAmount">
+			      <input type="hidden" name="gCode" value="${goodsRetrieve.gCode}">
 			      <img src="images/up.PNG" id="up"> 
 			      <img src="images/down.PNG" id="down">
 		     

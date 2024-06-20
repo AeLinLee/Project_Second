@@ -68,6 +68,19 @@ public class CartDTO {
 		this.gCartDate = gCartDate;
 	}
 
+	// 장바구니 리스트 구현
+	public List<GoodsDTO> getGoodsList() {
+		return goodsList;
+	}
+
+	public void setGoodsList(List<GoodsDTO> goodsList) {
+		this.goodsList = goodsList;
+	}
+	
+	 public void deleteCartItem( int num) {
+		 this. num=num;
+	}
+	
 	@Override
 	public String toString() {
 		return "CartDTO [num=" + num + ", gCode=" + gCode + ", userid=" + userid + ", gAmount=" + gAmount
