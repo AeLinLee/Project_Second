@@ -11,12 +11,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.exam.dto.MemberDTO;
 import com.exam.service.MemberService;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
 
 
 @Controller
@@ -92,5 +97,85 @@ public class MemberController {
 
 	}
 	
+//	@GetMapping("/update")
+//	public String updateForm(ModelMap m) {
+//		
+//		MemberDTO dto = new MemberDTO();
+//		m.addAttribute("memberDTO", dto);
+//		
+//		return "mypage";
+//	}
+//	
+//	@PostMapping("/update")
+//	public String update(@Valid MemberDTO  dto, BindingResult result) {
+//		
+//		if(result.hasErrors()) {
+//			return "mypage";
+//		}
+//				
+//		//DB연동
+//		logger.info("logger:update:{}", dto);
+//		
+//		int n = memberService.update(dto);
+//		
+//		return "redirect:mypage";
+//	}
+	
+//	@PostMapping("/update")
+//	public String update(ModelMap m) {
+//		
+//		MemberDTO dto = new MemberDTO();
+//		m.addAttribute("memberDTO", dto);
+//		
+//        String userid = dto.getUserid();
+//    	String username = dto.getUsername();
+//        String post = dto.getPost();
+//        dto.setPost(post);
+//        String addr1 = dto.getAddr1();
+//        dto.setAddr1(addr1);
+//    	String addr2 = dto.getAddr2();
+//    	dto.setAddr2(addr2);
+//    	String phone1 = dto.getPhone1();
+//    	dto.setPhone1(phone1);
+//    	String phone2 = dto.getPhone2();
+//    	dto.setPhone2(phone2);
+//    	String phone3 = dto.getPhone3();
+//    	dto.setPhone3(phone3);
+//    	String email1 = dto.getEmail1();
+//    	dto.setEmail1(email1);
+//    	String email2 = dto.getEmail2();
+//    	dto.setEmail2(email2);
+//    	
+//    	int n = memberService.update(dto);
+//		m.addAttribute("mypage", n);
+//				
+//		return "mypage";
+//	}
+	
+//	@PostMapping("/update")
+//	public String update(@Valid MemberDTO dto) {
+//        String userid = dto.getUserid();
+//  	    String username = dto.getUsername();
+//		memberService.update(dto);
+//		return "redirect:mypage";
+//	}
+	
+	@PostMapping("/update")
+	public String update( MemberDTO dto, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+	    if (bindingResult.hasErrors()) {
+	        redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
+	        return "redirect:mypage";  // Redirect back to the form with error messages
+	    }
 
+	    try {
+	    	logger.info("logger:update:{}", dto);
+	        memberService.update(dto);
+	        redirectAttributes.addFlashAttribute("successMessage", "Update successful!");
+	    } catch (Exception e) {
+	        redirectAttributes.addFlashAttribute("errorMessage", "Update failed: " + e.getMessage());
+	    }
+
+	    return "redirect:mypage";
+	}
+	
 }
