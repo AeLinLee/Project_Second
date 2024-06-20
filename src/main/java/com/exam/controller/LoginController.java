@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.exam.dto.GoodsDTO;
 import com.exam.dto.MemberDTO;
@@ -60,8 +61,9 @@ public class LoginController {
 	
 	//로그인실패시 로그인페이지로 돌아가기
 	@PostMapping(value={"/login_fail"})
-	public String showlogin_failPage() {
+	public String showlogin_failPage(RedirectAttributes redirectAttributes) {
 		logger.info("logger:showlogin_failPage");
+		redirectAttributes.addFlashAttribute("errormessage", "아이디 및 비밀번호를 다시 확인해주세요.");
 		return "redirect:login";
 	}
 	

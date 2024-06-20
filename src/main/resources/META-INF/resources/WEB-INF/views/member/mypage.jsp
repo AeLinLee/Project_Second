@@ -121,6 +121,9 @@ $(document).ready(function(){
 		    <button type="submit" class="btn btn-primary">update</button>
 		    <button type="reset" class="btn btn-primary" onclick="location.href='http://localhost:8090/toy/main'">cancel</button>
 		  </div>
+		  <div class="col-12">
+            <div>${successMessage}</div> 
+            <div>${errorMessage}</div> 
  </form>
 	
 </div>

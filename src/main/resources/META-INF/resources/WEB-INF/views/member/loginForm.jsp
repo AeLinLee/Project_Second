@@ -8,7 +8,7 @@
     <form action="auth" method="post" class="row g-3 m-4">
     
      <div class="row mb-3">
-     <div>${errorMessage}</div>   
+     <div>${errormessage}</div>   
 	 </div>
 	 
 		  <div class="row mb-3">
