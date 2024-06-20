@@ -10,7 +10,8 @@ public interface CartService {
 
 	public int cartAdd (CartDTO dto);
 	public List<CartDTO> cartList(String userid);
-
+	public int deleteCart(int num);
+	public void Alldelete();
 	
 
 	

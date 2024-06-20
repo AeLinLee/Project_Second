@@ -51,13 +51,22 @@ values (#{gCode}, #{userid},#{gAmount} )
 </collection>
 </resultMap>
  
- <select id="cartList" parameterType="string" resultMap="yyy">
+<select id="cartList" parameterType="string" resultMap="yyy">
 select *
 from cart join goods on cart.gCode = goods.gCode
 where userid=#{userid}
 </select>
 
+ <!-- 상품삭제 -->
+ <delete id="deleteCart" parameterType="int">
+delete from cart 
+  where num = #{num}
+</delete>
 
+ <!-- 상품전체삭제 -->
+<delete id="Alldelete" >
+        DELETE FROM cart
+    </delete>
 
 
 

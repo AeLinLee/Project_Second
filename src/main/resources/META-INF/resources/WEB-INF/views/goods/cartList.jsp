@@ -21,7 +21,33 @@ $(document).ready(function(){
         }
     });
 
- 
+    // 장바구니 삭제 버튼
+    $(".delete_btn").on("click", function(e){
+        e.preventDefault();
+        const num = $(this).val();
+        $(".delete_num").val(num);
+        $(".quantity_delete_form").submit();
+    });
+    
+    // 전체삭제 버튼 클릭 시
+    $(".btn-Alldelete").on("click", function() {
+        if (confirm("모든 항목을 삭제하시겠습니까?")) {
+            $(".quantity_Alldelete_form").submit();
+        }
+    });
+
+    // 개별삭제 폼 서브밋
+    $(".quantity_delete_form").on("submit", function() {
+        this.action = "toy/cartList/delete";
+        this.method = "post";
+    });
+    
+    // 전체삭제 폼 서브밋
+    $(".quantity_Alldelete_form").on("submit", function() {
+        this.action = "toy/cartList/Alldelete";
+        this.method = "post";
+    });
+    
  
 
 });//end ready()
@@ -59,7 +85,7 @@ $(document).ready(function(){
                                     <td>${amount}</td>
                                     <td>${dto.goodsList[0].gPrice * amount}</td>
                                     <td>${dto.gCartDate}</td>
-                                    <td> <button type="button" class="btn btn-warning btn-delete" value="${dto.gCode}">Delete</button> </td>
+                                    <td> <button type="button" class="btn btn-warning delete_btn" value="${dto.num}">Delete</button> </td>
 						</tr>
 					</c:forEach>
 					    <tr>
@@ -74,6 +100,16 @@ $(document).ready(function(){
 
                   </table>
               </div>
-             <button type="button" class="btn btn-success m-5 btn-Alldelete">전체삭제</button>
+             <button type="button" class="btn btn-success m-5 btn-Alldelete" >전체삭제</button>
         </div>
     </div>
+    <!-- 삭제 form -->
+			<form action="toy/cartList/delete" method="post" class="quantity_delete_form">
+				<input type="hidden" name="num" class="delete_num">
+			</form>
+    <!-- 전체삭제 form -->
+<form action="toy/cartList/Alldelete" method="post" class="quantity_Alldelete_form">
+    <input type="hidden" name="allDelete" value="true">
+</form>
+  
+			

@@ -52,14 +52,23 @@ public class CartListController {
 	            return "redirect:/checkLogin";
 	        }
 	    }
-	 @PostMapping("/cartList")
-	 public void cartList(int gCode) {
-		 System.out.println(gCode);
-		 System.out.println("=========================");
-	 }
-	 
-	 
 
+
+	 
+	 //개별삭제
+	  @PostMapping("toy/cartList/delete")
+	    public String deleteCartItem(@RequestParam("num") int num) {
+		  cartService.deleteCart(num);
+	        return "redirect:/cartList"; // 삭제 후 장바구니 목록 페이지로 리디렉션
+	    }
+	
+	  // 전체삭제
+	    @PostMapping("toy/cartList/Alldelete")
+	    public String Alldelete() {
+	        cartService.Alldelete();
+	        return "redirect:/cartList"; // 삭제 후 장바구니 목록 페이지로 리다이렉트
+	    }
+	
 
 
 }//end

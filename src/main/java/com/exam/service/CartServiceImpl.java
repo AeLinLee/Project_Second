@@ -29,6 +29,24 @@ public class CartServiceImpl implements CartService {
 	public List<CartDTO> cartList(String userid) {
 		return cartMapper.cartList(userid) ;
 	}
+
+
+
+	@Override
+	public int deleteCart(int num) {
+		return cartMapper.deleteCart(num);
+	}
+
+
+
+	@Override
+	public void Alldelete() {
+		 cartMapper.Alldelete();
+	}
+
+
+
+
 	
 
 
