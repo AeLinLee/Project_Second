@@ -2,6 +2,8 @@ package com.exam.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,13 +28,19 @@ public class CartAddController {
 	
 	
 	@PostMapping("/cartAdd")
-    public String cartAdd(@SessionAttribute("login") MemberDTO dto,
-                          @RequestParam("gAmount") int gAmount,
+	 public String cartAdd(@RequestParam("gAmount") int gAmount,
                           @RequestParam("gCode") String gCode,
                           Model model) {
 
-        if (dto != null) {
-            // 로그인된 경우
+		//AuthProvider에 저장된 Authentication 얻자
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (auth != null && auth.getPrincipal() instanceof MemberDTO) {
+        	
+        	//dto에 로그인 담기
+        	MemberDTO dto = (MemberDTO) auth.getPrincipal();
+             logger.info("logger:Member:{}", dto);
+            
+             // 로그인된 경우
             String userid = dto.getUserid();
 
             // DTO에 저장
@@ -40,11 +48,12 @@ public class CartAddController {
             cartDTO.setUserid(userid);
             cartDTO.setgAmount(gAmount);
             cartDTO.setgCode(gCode);
+            
 
             // 서비스 연동
             int n = cartService.cartAdd(cartDTO);
 
-            return "redirect:/cartAddSuccess";
+            return "redirect:/main";
         } else {
             // 로그인 안된 경우
             return "redirect:/checkLogin";

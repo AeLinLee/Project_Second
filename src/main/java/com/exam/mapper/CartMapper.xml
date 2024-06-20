@@ -29,7 +29,7 @@
  
  <!-- 상품저장 -->
  <insert id="cartAdd" parameterType="CartDTO">
-insert into cart (gCode, userid,gAmoun)
+insert into cart (gCode, userid,gAmount)
 values (#{gCode}, #{userid},#{gAmount} )
 </insert>
  
@@ -56,6 +56,12 @@ select *
 from cart join goods on cart.gCode = goods.gCode
 where userid=#{userid}
 </select>
+
+
+
+
+
+
  
  
 </mapper>
