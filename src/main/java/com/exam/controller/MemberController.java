@@ -11,12 +11,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.exam.dto.MemberDTO;
 import com.exam.service.MemberService;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
 
 
 @Controller
@@ -92,5 +97,22 @@ public class MemberController {
 
 	}
 	
+	@PostMapping("/update")
+	public String update( MemberDTO dto, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+	    if (bindingResult.hasErrors()) {
+	        redirectAttributes.addFlashAttribute("errors", bindingResult.getAllErrors());
+	        return "redirect:mypage";  // Redirect back to the form with error messages
+	    }
 
+	    try {
+	    	logger.info("logger:update:{}", dto);
+	        memberService.update(dto);
+	        redirectAttributes.addFlashAttribute("successMessage", "업데이트 성공!!");
+	    } catch (Exception e) {
+	        redirectAttributes.addFlashAttribute("errorMessage", "업데이트 실패했습니다..: " + e.getMessage());
+	    }
+
+	    return "redirect:mypage";
+	}
+	
 }

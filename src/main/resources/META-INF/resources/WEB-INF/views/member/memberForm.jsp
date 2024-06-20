@@ -149,7 +149,7 @@ $(document).ready(function(){
 		  </div>
 		  <div class="col-12">
 		    <button type="submit" class="btn btn-primary">Sign in</button>
-		    <button type="reset" class="btn btn-primary">cancel</button>
+		    <button type="reset" class="btn btn-primary" onclick="location.href='http://localhost:8090/toy/main'">cancel</button>
 		  </div>
  </form:form>
 	
