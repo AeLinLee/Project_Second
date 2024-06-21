@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.exam.mapper.BuyMapper">
+
+ <!-- 구매목록 -->
+ <select id="goodsList" parameterType="string" resultType="GoodsDTO">
+ select gCode,
+        gCategory,
+        gName,
+        gContent,
+        gPrice,
+        gImage
+  from goods
+  where gCategory = #{gCategory}
+ </select>
+
+ 
+ <!-- 가져온 상품 정보 구매테이블에 저장 -->
+ <insert id="buyAdd" parameterType="BuyDTO">
+insert into buy (gCode, userid,gAmount)
+values (#{gCode}, #{userid},#{gAmount} )
+</insert>
+
+ <!-- 조인 -->
+ <resultMap type="CartDTO" id="xxx">
+<id property="num" column="num"/>
+<result property="userid" column="userid"/>
+<result property="gCode" column="gCode"/>
+<result property="gAmount" column="gAmount"/>
+<!-- 1:N -->
+<collection property="goodsList" ofType="com.exam.dto.GoodsDTO">
+<id property="gCode" column="gCode"/>
+<result property="gCategory" column="gCategory"/>
+<result property="gName" column="gName"/>
+<result property="gContent" column="gContent"/>
+<result property="gPrice" column="gPrice"/>
+<result property="gImage" column="gImage"/>
+</collection>
+</resultMap>
+ 
+<select id="buyList" parameterType="string" resultMap="xxx">
+select *
+from buy join goods on buy.gCode = goods.gCode
+where userid=#{userid}
+</select>
+
+
+ 
+
+
+	
+
+
+
+
+ 
+ 
+</mapper>

@@ -19,7 +19,7 @@
         font-weight: bolder;
         }
         
-         #logout,#mypage,#cartlist{
+         #logout,#mypage,#cartlist,#buyList{
         color: navy;
         font-weight: bolder;
         text-decoration: underline;
@@ -106,6 +106,11 @@
                               <sec:authorize access="isAuthenticated()">
                              <li class="nav-item">
                                <a class="nav-link" href="cartList" id="cartlist">cartList</a>
+                            </li>
+                            </sec:authorize>
+                              <sec:authorize access="isAuthenticated()">
+                             <li class="nav-item">
+                               <a class="nav-link" href="buyList" id="buyList">buyList</a>
                             </li>
                             </sec:authorize>
                         </ul>

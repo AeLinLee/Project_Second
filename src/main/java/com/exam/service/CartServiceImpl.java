@@ -44,6 +44,20 @@ public class CartServiceImpl implements CartService {
 		 cartMapper.Alldelete();
 	}
 
+	
+
+	@Override
+	public int cartBuy(CartDTO dto) {
+		return cartMapper.cartBuy(dto);
+	}
+
+
+    @Override
+    public CartDTO getCartItemByNum(int num) {
+        return cartMapper.getCartItemByNum(num);
+    }
+
+
 
 
 

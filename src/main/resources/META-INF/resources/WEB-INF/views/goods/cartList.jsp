@@ -22,11 +22,12 @@ $(document).ready(function(){
     });
 
     // 장바구니 삭제 버튼
-    $(".delete_btn").on("click", function(e){
-        e.preventDefault();
-        const num = $(this).val();
+    $(".delete_btn").on("click", function(){
+    	const num = $(this).val();
         $(".delete_num").val(num);
+        if (confirm("삭제되었습니다.")){
         $(".quantity_delete_form").submit();
+    	}
     });
     
     // 전체삭제 버튼 클릭 시
@@ -48,6 +49,24 @@ $(document).ready(function(){
         this.method = "post";
     });
     
+
+    
+    // 구매하기 버튼 구현
+    $(".buyItem").on("click", function(){
+        const selectedItems = $(".check:checked").map(function(){
+            return $(this).val();
+        }).get();
+
+        if (selectedItems.length === 0) {
+            alert("구매할 상품을 선택해주세요.");
+            return;
+        }
+
+        alert("구매가 되었습니다.");
+        $(".selected_items").val(selectedItems.join(","));
+        $(".buy_form").submit();
+    }); 
+              
  
 
 });//end ready()
@@ -101,6 +120,7 @@ $(document).ready(function(){
                   </table>
               </div>
              <button type="button" class="btn btn-success m-5 btn-Alldelete" >전체삭제</button>
+             <button type="button" class="btn btn-success m-5 buyItem" >구매하기</button>
         </div>
     </div>
     <!-- 삭제 form -->
@@ -110,6 +130,10 @@ $(document).ready(function(){
     <!-- 전체삭제 form -->
 <form action="toy/cartList/Alldelete" method="post" class="quantity_Alldelete_form">
     <input type="hidden" name="allDelete" value="true">
+</form>
+<!-- 구매 form -->
+<form action="toy/cartList/buyAdd" method="post" class="buy_form">
+    <input type="hidden" name="selectedItems" class="selected_items">
 </form>
   
 			
