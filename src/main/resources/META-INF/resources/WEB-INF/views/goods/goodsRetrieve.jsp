@@ -24,11 +24,21 @@ $(document).ready(function(){
 	});//end down
 	
 	//장바구니 저장 서브밋
-	$("form").on("submit",function(){
-		alert("장바구니 저장 완료");
-		this.action="cartAdd";   
-		this.method="post";
-	});//end 장바구니 저장 서브밋
+    $(".cartAdd").on("click", function(){
+        alert("장바구니 저장 완료");
+        $("form").attr("action", "cartAdd");
+        $("form").attr("method", "post");
+        $("form").submit();
+    });
+	
+	
+ 	//구매하기 버튼 눌렀을때 장바구니로 저장 및 이동.
+	$(".buy").on("click",function(){
+	    alert("구매 진행을 위해 장바구니로 이동합니다.");
+	    $("form").attr("action", "cartBuy");
+	    $("form").attr("method", "post");
+	    $("form").submit(); // 수동으로 폼을 제출
+	});//end 
 	
 });//end ready()
 </script>	
@@ -61,8 +71,8 @@ $(document).ready(function(){
 			      <img src="images/down.PNG" id="down">
 		     
 		      </h6>
-		    <a href="#" class="btn btn-primary mt-3">구매</a>
-		  <button type="submit" class="btn btn-primary mt-3">장바구니</button>
+		    <button type="submit" class="btn btn-primary mt-3 buy">구매</button>
+		  <button type="submit" class="btn btn-primary mt-3 cartAdd">장바구니</button>
 		  </div>
 		</div>
 	   

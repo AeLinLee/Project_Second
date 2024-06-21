@@ -67,7 +67,17 @@ delete from cart
 <delete id="Alldelete" >
         DELETE FROM cart
     </delete>
+    
+      <!-- 구매버튼 시 장바구니 이동 -->
+ <insert id="cartBuy" parameterType="CartDTO">
+insert into cart (gCode, userid,gAmount)
+values (#{gCode}, #{userid},#{gAmount} )
+</insert>
 
+<!-- 구매버튼 시 선택한 상품 정보 가져오기 -->
+<select id="getCartItemByNum" resultType="CartDTO" parameterType="int">
+        SELECT * FROM cart WHERE num = #{num}
+    </select>
 
 
 

@@ -2,10 +2,33 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<style type="text/css">
+	.goodBox {
+      width: 230px;
+      height: 320px;
+      margin: 25px;
+   }
+   
+   .gImage {
+   	width: 200px;
+   	height: 230px;
+   	object-fit: contain;
+   }
+</style>
 <div class="container">
   <div class="row">
   <c:forEach var="dto" items="${goodsList}">
-    <div class="col border border-dark m-4 w-10">
+  
+  	<div class="goodBox">
+          <a href="goodsRetrieve?gCode=${dto.gCode}"> 
+            <img src="images/items/${dto.gImage}.png" width="200" class="gImage">
+         </a>
+            <div class="mt-4 fs-6">${dto.gName}</div>
+                <div class="mt-2 fs-6">${dto.gContent}</div>
+                <div class="mt-2 fs-6">${dto.gPrice}</div>
+       </div>
+  
+    <%-- <div class="col border border-dark m-4 w-10">
       <a href="goodsRetrieve?gCode=${dto.gCode}">
        <div class="image-container">
 		<img src="images/items/${dto.gImage}.png" class="product-image">
@@ -14,7 +37,8 @@
        <div class="mt-4 fs-6">${dto.gName}</div>
        <div class="mt-2 fs-6">${dto.gContent}</div>
        <div class="mt-2 fs-6">${dto.gPrice}</div>
-    </div>
+    </div> --%>
+    
     </c:forEach>
   </div>
 </div>

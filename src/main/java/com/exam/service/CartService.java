@@ -12,6 +12,8 @@ public interface CartService {
 	public List<CartDTO> cartList(String userid);
 	public int deleteCart(int num);
 	public void Alldelete();
+	public int cartBuy (CartDTO dto);
+	public CartDTO getCartItemByNum(int num);
 	
 
 	
