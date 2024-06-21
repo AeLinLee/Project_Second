@@ -57,12 +57,10 @@
         
         #top{
         background-color: white;
-        background-image: 
         }
         
         #menu{
         background-color: white;
-        background-image: 
         }
         
     </style>

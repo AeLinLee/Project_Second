@@ -39,9 +39,10 @@ public class MemberController {
 	@GetMapping("/idCheck")
 	public @ResponseBody  String idCheck(@RequestParam String userid) {
 		MemberDTO dto = memberService.idCheck(userid);
-		String mesg = "사용가능";
+		String mesg = "사용가능한 아이디입니다.";
 		if(dto!=null) {
-			mesg = "사용불가";
+			mesg = "이미 존재하는 아이디입니다. "
+					+ "다른 아이디를 사용해주세요.";
 		}
 		return mesg;
 	}
