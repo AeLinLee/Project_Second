@@ -10,9 +10,9 @@ $(document).ready(function(){
 	$("#passwd2").on("keyup",function(){
 		var passwd = $("#passwd").val();
 		var passwd2 = $("#passwd2").val();
-		var mesg = "비번일치";
+		var mesg = "비밀번호가 일치합니다.";
 		if(passwd != passwd2){
-			mesg = "비번 불일치";
+			mesg = "비밀번호가 일치하지않습니다.";
 		}
 		$("#pwdcheck").text(mesg);
 	});// end 비번확인
@@ -56,6 +56,7 @@ $(document).ready(function(){
 		    <label for="userid" class="col-sm-2 col-form-label">*아이디</label>
 		    <div class="col-auto">
 		      <form:input type="text" class="form-control" path="userid"/>
+		      <form:errors path="userid"></form:errors>
 		    </div>
 		    <div class="col-auto">
 			    <button type="button" class="btn btn-primary mb-3" id="idDupulicatedcheck">아이디중복</button>
@@ -84,6 +85,7 @@ $(document).ready(function(){
 		    <label for="username" class="col-sm-2 col-form-label">이름</label>
 		    <div class="col-auto">
 		      <form:input type="text" class="form-control" path="username" />
+		      <form:errors path="username"></form:errors>
 		    </div>
 		  </div>
 		  <hr>
