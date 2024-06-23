@@ -78,6 +78,11 @@ values (#{gCode}, #{userid},#{gAmount} )
 <select id="getCartItemByNum" resultType="CartDTO" parameterType="int">
         SELECT * FROM cart WHERE num = #{num}
     </select>
+    
+    <!--구매버튼 시 선택한 상품 카트 삭제  -->
+     <delete id="deleteCartItemByNum" parameterType="int">
+        DELETE FROM cart WHERE num = #{num}
+    </delete>
 
 
 

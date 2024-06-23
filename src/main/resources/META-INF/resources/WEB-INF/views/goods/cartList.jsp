@@ -65,7 +65,16 @@ $(document).ready(function(){
         alert("구매가 되었습니다.");
         $(".selected_items").val(selectedItems.join(","));
         $(".buy_form").submit();
-    }); 
+    });
+    
+    
+ // 상품 이미지 클릭 시 상품 상세 페이지로 이동
+    $(".product-image").on("click", function() {
+        const gCode = $(this).data("gcode");
+        if (gCode) {
+            window.location.href = "goodsRetrieve?gCode=" + gCode;
+        }
+    });
               
  
 
@@ -87,7 +96,6 @@ $(document).ready(function(){
                                 <th>상품가격</th>
                                 <th>상품수량</th>
                                 <th>합계</th>
-                                <th>날짜</th>
                                 <th>Delete</th>
                             </tr>
                     </thead>
@@ -99,11 +107,13 @@ $(document).ready(function(){
 						 <tr>
 						            <td><input type="checkbox" name="check"  class="check" value="${dto.num}"></td> 
 					                <td>${dto.num}</td> 
-                                    <td><img src="images/items/${dto.goodsList[0].gImage}.png" width="50" height="50" ></td>
-                                    <td>${dto.goodsList[0].gPrice}</td>
+                                    <td>
+                                     <a href="#" class="product-image" data-gcode="${dto.goodsList[0].gCode}">
+                                    <img src="images/items/${dto.goodsList[0].gImage}.png" width="50" height="50" >
+                                    </td>
+                                    <td>${dto.goodsList[0].gPrice}원</td>
                                     <td>${amount}</td>
-                                    <td>${dto.goodsList[0].gPrice * amount}</td>
-                                    <td>${dto.gCartDate}</td>
+                                    <td>${dto.goodsList[0].gPrice * amount}원</td>
                                     <td> <button type="button" class="btn btn-warning delete_btn" value="${dto.num}">Delete</button> </td>
 						</tr>
 					</c:forEach>
@@ -113,7 +123,7 @@ $(document).ready(function(){
 					      <td></td>
 					      <td></td>
 					      <td></td>
-					      <td colspan="3">총합: &nbsp; ${sum}</td>
+					      <td colspan="3">총합: &nbsp; ${sum}원</td>
 					    </tr>
                     </tbody>
 

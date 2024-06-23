@@ -26,6 +26,12 @@ public class BuyServiceImpl implements BuyService {
 		return buyMapper.buyList(userid);
 	}
 
+	@Override
+	public void deleteBuy(int num) {
+		buyMapper.deleteBuy(num);
+		
+	}
+
 
 
 
