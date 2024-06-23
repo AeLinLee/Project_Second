@@ -88,7 +88,7 @@ $(document).ready(function(){
                 <table class="table">
                     <thead>
                             <tr>
-                                <th>전체삭제
+                                <th>선택
                                     &nbsp;
                                     <input type="checkbox" name="allCheck" id="allCheck"></th>
                                 <th>번호</th>
