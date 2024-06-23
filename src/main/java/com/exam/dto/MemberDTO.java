@@ -8,13 +8,13 @@ import org.apache.ibatis.type.Alias;
 @Alias("MemberDTO")
 public class MemberDTO {
 
-	@NotBlank(message = "적어도 한글이상 적어주세요.")
+	@NotBlank(message = "적어도 한글자 이상 적어주세요.")
 	String userid;
 	
 	@Size(min = 4, message = "비밀번호 4글자이상 적어주세요.")
 	String passwd;
 	
-	@NotBlank(message = "적어도 한글이상 적어주세요.")
+	@NotBlank(message = "적어도 한글자 이상 적어주세요.")
 	String username;
 	String post;
 	String addr1;

@@ -3,8 +3,10 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <style type="text/css">
+
+
 	.goodBox {
-      width: 230px;
+      width: 280px;
       height: 385px;
       margin: 25px;
       border: 2px solid #CCCCCC; /* 연한 회색 테두리 */
