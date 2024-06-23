@@ -14,6 +14,7 @@ public interface CartService {
 	public void Alldelete();
 	public int cartBuy (CartDTO dto);
 	public CartDTO getCartItemByNum(int num);
+	public void deleteCartItemByNum(int num);
 	
 
 	

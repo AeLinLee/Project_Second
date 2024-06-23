@@ -25,10 +25,10 @@ $(document).ready(function(){
 	
 	//장바구니 저장 서브밋
     $(".cartAdd").on("click", function(){
-        alert("장바구니 저장 완료");
         $("form").attr("action", "cartAdd");
         $("form").attr("method", "post");
         $("form").submit();
+        alert("장바구니 저장 완료");
     });
 	
 	
@@ -44,6 +44,34 @@ $(document).ready(function(){
 </script>	
 
 
+<style type="text/css">
+
+ .card {
+          width: 25rem;
+          margin: auto;
+        }
+    .card-image {
+        width: 100%; 
+        height: 300px; 
+        object-fit: fill; 
+        display: block; 
+        margin: auto; 
+    }
+    
+   
+    .card-body {
+        text-align: auto; 
+    }
+    .card-title{
+        text-align: left; 
+    }
+    .card-text{
+        text-align: left; 
+    }
+    .fw-bold{
+        text-align: left; 
+    }
+</style>
 
 
 
@@ -51,7 +79,7 @@ $(document).ready(function(){
 	<form class="row g-3 m-4">
 	  <div class="row">    
 		<div class="card" style="width:25rem;">
-		  <img src="images/items/${goodsRetrieve.gImage}.png" class="card-img-음악놀이" alt="...">
+		  <img src="images/items/${goodsRetrieve.gImage}.png" class="card-image" alt="...">
 		  <div class="card-body">
 		    <h6 class="card-title">
 		        <span class="fw-bold">제품코드:</span>  
@@ -61,7 +89,7 @@ $(document).ready(function(){
 		       ${goodsRetrieve.gName}</h6>
 		    <h6 class="card-text">
 		      <span class="fw-bold ">가격:</span>
-		       ${goodsRetrieve.gPrice}</h6>
+		       ${goodsRetrieve.gPrice}원</h6>
 			 <h6 class="card-text">
 			 
 			      <span class="fw-bold ">주문수량:</span>

@@ -45,6 +45,12 @@ from buy join goods on buy.gCode = goods.gCode
 where userid=#{userid}
 </select>
 
+ <!-- 구매상품삭제 -->
+ <delete id="deleteBuy" parameterType="int">
+delete from buy 
+  where num = #{num}
+</delete>
+
 
  
 

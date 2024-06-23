@@ -42,7 +42,7 @@ public class CartAddController {
             
              // 로그인된 경우
             String userid = dto.getUserid();
-
+            
             // DTO에 저장
             CartDTO cartDTO = new CartDTO();
             cartDTO.setUserid(userid);
@@ -86,10 +86,11 @@ public class CartAddController {
 
 	           // 서비스 연동
 	           int n = cartService.cartAdd(cartDTO);
-
+                
 	           return "redirect:/cartList";
 	       } else {
 	           // 로그인 안된 경우
+	    	   
 	           return "redirect:/checkLogin";
 	       }
 	   }

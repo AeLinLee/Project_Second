@@ -57,6 +57,9 @@ public class BuyAddController {
 
 	            // 서비스 연동
 	            int n = buyService.buyAdd(buyDTO);
+	            
+	            // 카트에서 항목 삭제
+	            cartService.deleteCartItemByNum(Integer.parseInt(item));
 	                }
 	            }
 	            return "redirect:/buyList";

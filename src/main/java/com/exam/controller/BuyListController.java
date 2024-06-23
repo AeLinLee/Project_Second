@@ -10,6 +10,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.exam.dto.BuyDTO;
 import com.exam.dto.MemberDTO;
@@ -48,13 +50,33 @@ public class BuyListController {
 	            return "redirect:/checkLogin";
 	        }
 	    }
+	 
+	 
+	   // 선택삭제
+	    @PostMapping("toy/buyList/deleteBuy")
+	    public String deleteBuy(@RequestParam("deleteBuys") String deleteBuys) {
+	        String[] items = deleteBuys.split(",");
+	        for (String item : items) {
+	            buyService.deleteBuy(Integer.parseInt(item));
+	        }
+	        return "redirect:/buyList"; // 삭제 후 구매리스트 페이지로 리다이렉트
+	    }
+	    
+	    
+	    
+	    
+	    
+	    
+	}//end
+	 
+
+	
 
 
 
 	
 
 
-}//end
 
 
 

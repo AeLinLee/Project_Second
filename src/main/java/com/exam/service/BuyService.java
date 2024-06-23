@@ -9,6 +9,7 @@ public interface BuyService {
 
 	public int buyAdd (BuyDTO dto);
 	public List<BuyDTO> buyList(String userid);
+	public void deleteBuy(int num);
 
 	
 

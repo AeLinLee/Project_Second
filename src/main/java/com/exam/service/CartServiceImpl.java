@@ -56,6 +56,11 @@ public class CartServiceImpl implements CartService {
     public CartDTO getCartItemByNum(int num) {
         return cartMapper.getCartItemByNum(num);
     }
+    
+    @Override
+    public void deleteCartItemByNum(int num) {
+        cartMapper.deleteCartItemByNum(num);
+    }
 
 
 
